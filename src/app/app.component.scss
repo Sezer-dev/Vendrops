@@ -1,0 +1,39 @@
+.container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: 100%;
+
+  .sidebar {
+    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo {
+      margin-bottom: 48px;
+    }
+
+    .navigation {
+      height: 100%;
+    }
+
+    .user-dropdown{
+      margin: 98px 0;
+    }
+  }
+
+  .main {
+    .content-container {
+      .header {
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid black;
+      }
+      .content {
+        padding: 48px;
+      }
+    }
+  }
+}

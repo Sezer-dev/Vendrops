@@ -1,0 +1,123 @@
+<div class="products">
+  <h1>Products</h1>
+
+  <div class="add-product">
+    <button (click)="openDrawer()">Add Product</button>
+  </div>
+
+  <div class="filter">
+    <label for="table-filter">Filter:</label>
+    <input
+      id="table-filter"
+      type="text"
+      [(ngModel)]="keyword"
+      placeholder="Type something"
+    />
+  </div>
+
+  <table>
+    <thead>
+      <th>Product Name</th>
+      <th>Related Categories</th>
+      <th>Product Description</th>
+      <th>Product Photo</th>
+      <th>Gender</th>
+      <th>Price</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of productList | tableFilter: keyword">
+        <td>{{ item.name }}</td>
+        <td>{{ item.relatedCategories }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.photo }}</td>
+        <td>{{ item.gender }}</td>
+        <td>{{ item.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-drawer [(showDrawer)]="showDrawer">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="input-container">
+      <label for="productName">Name</label>
+      <input
+        id="productName"
+        type="text"
+        name="fProductName"
+        placeholder="Product Name"
+        #fProductNAme="ngModel"
+        [(ngModel)]="product.name"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="relatedCategories">Related Category</label>
+      <select
+        name="fRelatedCategories"
+        id="relatedCategories"
+        [(ngModel)]="product.relatedCategories"
+      >
+        <ng-template ngFor let-category [ngForOf]="categories">
+          <option [value]="category.name">{{ category.name | titlecase }}</option>
+        </ng-template>
+      </select>
+    </div>
+    <div class="input-container">
+      <label for="productDesc">Description</label>
+      <input
+        id="productDesc"
+        type="text"
+        name="fProductCategories"
+        placeholder="Product Description"
+        [(ngModel)]="product.description"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="productPhoto">Photo</label>
+      <input
+        id="productPhoto"
+        type="text"
+        name="fProductPhoto"
+        placeholder="Product Photo"
+        [(ngModel)]="product.photo"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="productgender">Gender</label>
+      <input
+        id="productGender"
+        type="text"
+        name="fProductGender"
+        placeholder="Product Gender"
+        [(ngModel)]="product.gender"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="productPrice">Price</label>
+      <input
+        id="productPrice"
+        type="number"
+        name="fProductPrice"
+        placeholder="Product Price"
+        [(ngModel)]="product.price"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="productSalesQuantity">Sales Quantity</label>
+      <input
+        id="productSalesQuantity"
+        type="number"
+        name="fProductSalesQuantity"
+        placeholder="Product Sales Quantity"
+        [(ngModel)]="product.sales"
+        required
+      />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</app-drawer>

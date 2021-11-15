@@ -1,0 +1,26 @@
+.drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: width 0.3s;
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow-x: hidden;
+  background-color: white;
+
+  button{
+    background-color: transparent;
+    position: absolute;
+    bottom: 40px;
+    padding: 8px;
+    border-radius: 8px;    
+    cursor: pointer;
+    
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}

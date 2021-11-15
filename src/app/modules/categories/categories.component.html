@@ -1,0 +1,88 @@
+<div class="categories">
+  <h1>Categories</h1>
+
+  <div class="filter">
+    <label for="table-filter">Filter:</label>
+    <input
+      id="table-filter"
+      type="text"
+      [(ngModel)]="keyword"
+      placeholder="Type something"
+    />
+  </div>
+
+  <div class="add-category">
+    <button (click)="openDrawer()">Add Category</button>
+  </div>
+
+  <table>
+    <thead>
+      <th>Category Name</th>
+      <th>Parent Category</th>
+      <th>Category Description</th>
+      <th>Category Photo</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of categories | tableFilter: keyword">
+        <td>{{ item.name }}</td>
+        <td>{{ item.parent }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.photo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-drawer [(showDrawer)]="showDrawer">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="input-container">
+      <label for="categoryName">Name</label>
+      <input
+        id="categoryName"
+        type="text"
+        name="fCategoryName"
+        placeholder="Category Name"
+        #fCategoryName="ngModel"
+        [(ngModel)]="category.name"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="input-container">
+      <label for="parentCategory">Parent</label>
+      <input
+        id="parentCategory"
+        type="text"
+        name="fParentCategory"
+        placeholder="Parent Category"
+        [(ngModel)]="category.parent"
+        autocomplete="off"
+      />
+    </div>
+    <div class="input-container">
+      <label for="categoryDesc">Description</label>
+      <input
+        id="categoryDesc"
+        type="text"
+        name="fCategoryDescription"
+        placeholder="Category Description"
+        [(ngModel)]="category.description"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <div class="input-container">
+      <label for="categoryPhoto">Photo</label>
+      <input
+        id="categoryPhoto"
+        type="text"
+        name="fCategoryPhoto"
+        placeholder="Category Photo"
+        [(ngModel)]="category.photo"
+        required
+        autocomplete="off"
+      />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</app-drawer>

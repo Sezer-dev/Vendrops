@@ -1,0 +1,26 @@
+<div class="user">
+  <div class="container">
+    <div class="user-info" (click)="showDropdownChange()">
+      <img
+        src="../../../../assets/images/114-user.svg"
+        alt="user-icon"
+        class="user-icon"
+      />
+      <p>Name Surname</p>
+      <span
+        class="dropdown-icon"
+        [ngStyle]="{
+          transform: showDropdown ? 'rotate(0deg)' : 'rotate(180deg)'
+        }"
+      ></span>
+    </div>
+
+    <div class="user-dropdown" *ngIf="showDropdown">
+      <ul>
+        <li>Profile</li>
+        <li>Settings</li>
+        <li>Log Out</li>
+      </ul>
+    </div>
+  </div>
+</div>

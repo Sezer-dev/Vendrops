@@ -1,0 +1,12 @@
+<div
+  class="drawer"
+  [ngStyle]="{
+    width: !showDrawer ? '0' : '240px',
+    borderLeft: !showDrawer ? 'none' : '1px solid black',
+    padding: !showDrawer ? '0' : '12px'
+  }"
+>
+  <ng-content></ng-content>
+
+  <button (click)="drawerVisibility()">Close</button>
+</div>
