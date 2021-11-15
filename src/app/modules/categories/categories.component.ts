@@ -30,7 +30,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   public async onSubmit(form: NgForm): Promise<any> {
-    console.log(this.category);
     if (form.invalid) return;
     if (this.categories.length <= 0) {
       await this.localForage.set('categories', [this.category]);
